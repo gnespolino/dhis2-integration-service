@@ -9,7 +9,6 @@ import org.springframework.scheduling.annotation.EnableScheduling;
 @SpringBootApplication
 @EnableScheduling
 @EnableCaching
-@RequiredArgsConstructor
 public class Dhis2IntegrationServiceApplication {
 
 	public static void main(String[] args) {

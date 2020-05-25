@@ -30,6 +30,9 @@ class ApiControllerTest {
     @Autowired
     private MockMvc mockMvc;
 
+    @Autowired
+    private ObjectMapper objectMapper;
+
     @MockBean
     private Dhis2Client dhis2Client;
 
@@ -57,7 +60,7 @@ class ApiControllerTest {
                 .andExpect(status().isOk())
                 .andReturn();
 
-        DataElementGroup responseContent = new ObjectMapper().readValue(mvcResult.getResponse().getContentAsString(), DataElementGroup.class);
+        DataElementGroup responseContent = objectMapper.readValue(mvcResult.getResponse().getContentAsString(), DataElementGroup.class);
 
         assertEquals(responseContent.getId(), A_DATA_ELEMENT_GROUP);
     }
@@ -71,7 +74,7 @@ class ApiControllerTest {
                 .andExpect(status().isOk())
                 .andReturn();
 
-        DataElement responseContent = new ObjectMapper().readValue(mvcResult.getResponse().getContentAsString(), DataElement.class);
+        DataElement responseContent = objectMapper.readValue(mvcResult.getResponse().getContentAsString(), DataElement.class);
 
         assertEquals(responseContent.getId(), A_DATA_ELEMENT);
     }
